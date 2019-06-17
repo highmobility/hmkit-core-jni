@@ -1,11 +1,6 @@
 package com.highmobility.btcore;
 
 public class HMBTCore {
-
-    static {
-        System.loadLibrary("hmbtcore");
-    }
-
     //Init core
     //interface is class reference what implements HMBTCoreInterface
     public native void HMBTCoreInit(HMBTCoreInterface coreInterface);
