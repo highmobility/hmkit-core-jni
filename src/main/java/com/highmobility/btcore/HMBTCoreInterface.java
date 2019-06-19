@@ -15,6 +15,7 @@ public interface HMBTCoreInterface {
     //Initialize central or peripheral
     //TT
     int HMBTHalInit();
+    int HMBTHalLog(int logLevel, byte[] string);
 
     //Start stop central scanning
     int HMBTHalScanStart();
