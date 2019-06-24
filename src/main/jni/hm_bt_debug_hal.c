@@ -11,7 +11,7 @@ void hm_bt_debug_hal_log(const char *str, ...){
     va_list list;
     va_start(list,str);
     vasprintf(&ptr,str,list);
-    hm_bt_debug_hal_log_hex(ptr, strlen(ptr));
+    hm_bt_debug_hal_log_hex((uint8_t *)ptr, strlen(ptr));
     free(ptr);
     va_end(list);
 }
