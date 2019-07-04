@@ -10,11 +10,20 @@ buildscript {
     }
 }
 
-plugins {
-    id "java"
-}
-
+apply plugin: "java"
 apply plugin: "com.jfrog.artifactory"
+apply plugin: 'maven'
+
+repositories {
+    jcenter()
+    maven {
+        url "http://jfrog.high-mobility.com/artifactory/gradle-dev-local/"
+        credentials {
+            username System.properties['devReadUser']
+            password System.properties['devReadPassword']
+        }
+    }
+}
 
 def artifact = new Properties()
 artifact.load(new FileInputStream("$projectDir/deploy.settings"))
@@ -24,17 +33,13 @@ version=artifact.version
 
 sourceCompatibility = 1.8
 
-repositories {
-    jcenter()
-}
-
 dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
 // deploy
 
-apply plugin: 'maven'
+
 /*apply plugin: 'com.jfrog.bintray'
 
 install {
