@@ -1,0 +1,7 @@
+siteUrl = https://github.com/highmobility/hm-java-core-jni
+gitUrl = https://github.com/highmobility/hm-java-core-jni
+version = 1.0.0
+groupId = com.highmobility
+licenses = ['GPL-3.0']
+id = hmkit-core-jni
+repo = gradle-dev-local

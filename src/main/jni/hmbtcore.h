@@ -11,6 +11,7 @@ jobject coreInterfaceRef;
 JNIEnv *envRef;
 
 jmethodID interfaceMethodHMBTHalInit;
+jmethodID interfaceMethodHMBTHalLog;
 jmethodID interfaceMethodHMBTHalScanStart;
 jmethodID interfaceMethodHMBTHalScanStop;
 jmethodID interfaceMethodHMBTHalAdvertisementStart;

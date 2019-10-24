@@ -24,6 +24,7 @@ void prepareCallbackFunctions(JNIEnv *env, jobject instance, jobject coreInterfa
     interfaceClassRef = env->GetObjectClass(coreInterface);
 
     interfaceMethodHMBTHalInit = env->GetMethodID(interfaceClassRef, "HMBTHalInit","()I");
+    interfaceMethodHMBTHalLog = env->GetMethodID(interfaceClassRef, "HMBTHalLog","(I[B)I");
     interfaceMethodHMBTHalScanStart = env->GetMethodID(interfaceClassRef, "HMBTHalScanStart","()I");
     interfaceMethodHMBTHalScanStop = env->GetMethodID(interfaceClassRef, "HMBTHalScanStop","()I");
     interfaceMethodHMBTHalAdvertisementStart = env->GetMethodID(interfaceClassRef, "HMBTHalAdvertisementStart","([B[B)I");
