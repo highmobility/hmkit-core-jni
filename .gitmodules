@@ -1,0 +1,6 @@
+[submodule "crypto-c"]
+	path = crypto-c
+	url = git@bitbucket.org:highmobility/crypto-c.git
+[submodule "high-mobility-bt-core"]
+	path = high-mobility-bt-core
+	url = git@bitbucket.org:highmobility/high-mobility-bt-core.git
