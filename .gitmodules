@@ -4,3 +4,6 @@
 [submodule "high-mobility-bt-core"]
 	path = high-mobility-bt-core
 	url = git@bitbucket.org:highmobility/high-mobility-bt-core.git
+[submodule "openssl"]
+	path = openssl
+	url = https://github.com/openssl/openssl.git
