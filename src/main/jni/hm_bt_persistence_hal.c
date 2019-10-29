@@ -3,7 +3,6 @@
 #include "hmbtcore.h"
 #include "hm_bt_debug_hal.h"
 #include <string.h>
-#include <android/log.h>
 
 uint32_t hm_bt_persistence_hal_get_serial(uint64_t appContxtId, uint8_t *serial){
 
