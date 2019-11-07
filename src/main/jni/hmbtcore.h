@@ -49,6 +49,7 @@ jmethodID interfaceMethodHMApiCallbackTelematicsCommandIncoming;
 jmethodID interfaceMethodHMCryptoHalGenerateNonce;
 
 jmethodID interfaceMethodHMApiCallbackRevokeResponse;
+jmethodID interfaceMethodHMApiCallbackRevokeIncoming;
 
 jmethodID interfaceMethodHMApiCallbackErrorCommandIncoming;
 
