@@ -314,7 +314,7 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCoreSendCustomCommand(JNIEnv *env, job
         jbyte *data = env->GetByteArrayElements( data_, NULL);
         jbyte *mac = env->GetByteArrayElements( mac_, NULL);
 
-        sendSecureContainerUsingMac(0, (uint8_t*)mac, (uint8_t*)data, size, 0, 0, 1);
+        sendSecureContainerUsingMac(0, (uint8_t*)mac, (uint8_t*)data, size, 0, 0, 2);
 
         env->ReleaseByteArrayElements( data_, data, 0);
         env->ReleaseByteArrayElements( mac_, mac, 0);
@@ -445,7 +445,7 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCoreSendTelematicsCommand(JNIEnv *env,
         jbyte *nonce = env->GetByteArrayElements( nonce_, NULL);
         jbyte *data = env->GetByteArrayElements( data_, NULL);
 
-        hm_api_send_telematics_command(0, (uint8_t*)serial, (uint8_t*)nonce, length, (uint8_t*)data, 0, 0, 1);
+        hm_api_send_telematics_command(0, (uint8_t*)serial, (uint8_t*)nonce, length, (uint8_t*)data, 0, 0, 2);
 
         env->ReleaseByteArrayElements( data_, data, 0);
         env->ReleaseByteArrayElements( nonce_, nonce, 0);
