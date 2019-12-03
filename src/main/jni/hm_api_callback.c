@@ -376,19 +376,10 @@ void hm_api_callback_revoke_incoming(uint64_t appContxtId, hm_device_t *device, 
     (*envRef)->CallVoidMethod(envRef, obj, setIsAuthenticated, device->is_authorised);
     (*envRef)->CallVoidMethod(envRef, obj, setAppId, appid_);
 
-    jbyteArray data_ = (*envRef)->NewByteArray(envRef,200);
-    (*envRef)->SetByteArrayRegion(envRef, data_, 0, 200, (const jbyte*) data );
+    (*envRef)->CallVoidMethod(envRef, coreInterfaceRef, interfaceMethodHMApiCallbackRevokeIncoming, obj);
 
-    jintArray size_ = (*envRef)->NewIntArray(envRef,1);
-      (*envRef)->SetIntArrayRegion(envRef, size_, 0, 1, (const jint*) size );
+      *size = 0;
 
-    (*envRef)->CallVoidMethod(envRef, coreInterfaceRef, interfaceMethodHMApiCallbackRevokeIncoming, obj, data_, size_);
-
-    jint* size_array = (*envRef)->GetIntArrayElements(envRef, size_, NULL);
-      *size = size_array[0];
-
-    jbyte* content_array = (*envRef)->GetByteArrayElements(envRef, data_, NULL);
-    memcpy(data,content_array,*size);
 
     if ((*envRef)->ExceptionCheck(envRef)) {
         (*envRef)->ExceptionClear(envRef);
