@@ -136,7 +136,7 @@ void hm_api_callback_command_incoming(uint64_t appContxtId, hm_device_t *device,
       }
 }
 
-void hm_api_callback_command_response(uint64_t appContxtId, hm_device_t *device, uint8_t *data, uint32_t length, uint8_t *respID, uint16_t respID_size, uint8_t version)
+void hm_api_callback_command_response(uint64_t appContxtId, hm_device_t *device, uint8_t content_type, uint8_t *data, uint32_t length, uint8_t *respID, uint16_t respID_size, uint8_t version)
 {
     jclass cls = (*envRef)->FindClass(envRef, "com/highmobility/btcore/HMDevice");
     jmethodID constructor = (*envRef)->GetMethodID(envRef,cls, "<init>", "()V");
@@ -164,7 +164,7 @@ void hm_api_callback_command_response(uint64_t appContxtId, hm_device_t *device,
     jbyteArray data_ = (*envRef)->NewByteArray(envRef,10024);
     (*envRef)->SetByteArrayRegion(envRef, data_, 0, length, (const jbyte*) data );
 
-    (*envRef)->CallVoidMethod(envRef, coreInterfaceRef, interfaceMethodHMApiCallbackCustomCommandResponse, obj,data_,length);
+    (*envRef)->CallVoidMethod(envRef, coreInterfaceRef, interfaceMethodHMApiCallbackCustomCommandResponse, obj, content_type, data_,length);
 
     if ((*envRef)->ExceptionCheck(envRef)) {
         (*envRef)->ExceptionClear(envRef);

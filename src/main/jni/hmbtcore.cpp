@@ -54,7 +54,7 @@ void prepareCallbackFunctions(JNIEnv *env, jobject instance, jobject coreInterfa
     interfaceMethodHMApiCallbackEnteredProximity = env->GetMethodID(interfaceClassRef, "HMApiCallbackEnteredProximity","(Lcom/highmobility/btcore/HMDevice;)V");
     interfaceMethodHMApiCallbackExitedProximity = env->GetMethodID(interfaceClassRef, "HMApiCallbackExitedProximity","(Lcom/highmobility/btcore/HMDevice;)V");
     interfaceMethodHMApiCallbackCustomCommandIncoming = env->GetMethodID(interfaceClassRef, "HMApiCallbackCustomCommandIncoming","(Lcom/highmobility/btcore/HMDevice;I[BI)V");
-    interfaceMethodHMApiCallbackCustomCommandResponse = env->GetMethodID(interfaceClassRef, "HMApiCallbackCustomCommandResponse","(Lcom/highmobility/btcore/HMDevice;[BI)V");
+    interfaceMethodHMApiCallbackCustomCommandResponse = env->GetMethodID(interfaceClassRef, "HMApiCallbackCustomCommandResponse","(Lcom/highmobility/btcore/HMDevice;I[BI)V");
     interfaceMethodHMApiCallbackCustomCommandResponseError = env->GetMethodID(interfaceClassRef, "HMApiCallbackCustomCommandResponseError","(Lcom/highmobility/btcore/HMDevice;I)V");
     interfaceMethodHMApiCallbackGetDeviceCertificateFailed = env->GetMethodID(interfaceClassRef, "HMApiCallbackGetDeviceCertificateFailed","(Lcom/highmobility/btcore/HMDevice;[B)I");
     interfaceMethodHMApiCallbackPairingRequested = env->GetMethodID(interfaceClassRef, "HMApiCallbackPairingRequested","(Lcom/highmobility/btcore/HMDevice;)I");
