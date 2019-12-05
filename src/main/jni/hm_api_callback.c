@@ -101,7 +101,7 @@ void hm_api_callback_exited_proximity(uint64_t appContxtId, hm_device_t *device)
     }
 }
 
-void hm_api_callback_command_incoming(uint64_t appContxtId, hm_device_t *device, uint8_t *data, uint32_t length, uint8_t *respID, uint16_t respID_size, uint8_t version)
+void hm_api_callback_command_incoming(uint64_t appContxtId, hm_device_t *device, uint8_t content_type, uint8_t *data, uint32_t length, uint8_t *respID, uint16_t respID_size, uint8_t version)
 {
     jclass cls = (*envRef)->FindClass(envRef, "com/highmobility/btcore/HMDevice");
     jmethodID constructor = (*envRef)->GetMethodID(envRef,cls, "<init>", "()V");
@@ -129,7 +129,7 @@ void hm_api_callback_command_incoming(uint64_t appContxtId, hm_device_t *device,
     jbyteArray data_ = (*envRef)->NewByteArray(envRef,10024);
     (*envRef)->SetByteArrayRegion(envRef, data_, 0, length, (const jbyte*) data );
 
-    (*envRef)->CallVoidMethod(envRef, coreInterfaceRef, interfaceMethodHMApiCallbackCustomCommandIncoming, obj,data_,length);
+    (*envRef)->CallVoidMethod(envRef, coreInterfaceRef, interfaceMethodHMApiCallbackCustomCommandIncoming, obj,content_type,data_,length);
 
     if ((*envRef)->ExceptionCheck(envRef)) {
         (*envRef)->ExceptionClear(envRef);
@@ -316,7 +316,7 @@ uint32_t hm_api_callback_pairing_requested(uint64_t appContxtId, hm_device_t *de
     return ret;
 }
 
-void hm_api_callback_telematics_command_incoming(uint64_t appContxtId, hm_device_t *device, uint8_t id, uint32_t length, uint8_t *data, uint8_t *respID, uint16_t respID_size, uint8_t version){
+void hm_api_callback_telematics_command_incoming(uint64_t appContxtId, hm_device_t *device, uint8_t id, uint8_t content_type, uint32_t length, uint8_t *data, uint8_t *respID, uint16_t respID_size, uint8_t version){
     jclass cls = (*envRef)->FindClass(envRef, "com/highmobility/btcore/HMDevice");
     jmethodID constructor = (*envRef)->GetMethodID(envRef,cls, "<init>", "()V");
     jmethodID setMac = (*envRef)->GetMethodID(envRef,cls, "setMac", "([B)V");
@@ -343,7 +343,7 @@ void hm_api_callback_telematics_command_incoming(uint64_t appContxtId, hm_device
     jbyteArray data_ = (*envRef)->NewByteArray(envRef,length);
     (*envRef)->SetByteArrayRegion(envRef, data_, 0, length, (const jbyte*) data );
 
-    (*envRef)->CallVoidMethod(envRef, coreInterfaceRef, interfaceMethodHMApiCallbackTelematicsCommandIncoming, obj, id, length, data_);
+    (*envRef)->CallVoidMethod(envRef, coreInterfaceRef, interfaceMethodHMApiCallbackTelematicsCommandIncoming, obj, id, content_type, length, data_);
 
     if ((*envRef)->ExceptionCheck(envRef)) {
         (*envRef)->ExceptionClear(envRef);
