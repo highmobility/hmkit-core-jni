@@ -77,13 +77,13 @@ public interface HMBTCoreInterface {
     void HMApiCallbackExitedProximity(HMDevice device);
 
     //Callback
-    void HMApiCallbackCustomCommandIncoming(HMDevice device, byte[] data, int length); // received custom command
-    void HMApiCallbackCustomCommandResponse(HMDevice device, byte[] data, int length);
+    void HMApiCallbackCustomCommandIncoming(HMDevice device, int contentType, byte[] data, int length); // received custom command
+    void HMApiCallbackCustomCommandResponse(HMDevice device, int contentType, byte[] data, int length);
     void HMApiCallbackCustomCommandResponseError(HMDevice device, int errorType);
     int HMApiCallbackGetDeviceCertificateFailed(HMDevice device, byte[] nonce); //ret false on, et ei jätka
     int HMApiCallbackPairingRequested(HMDevice device); //ret false on, et ei jätka
 
-    void HMApiCallbackTelematicsCommandIncoming(HMDevice device, int id, int length, byte[] data);
+    void HMApiCallbackTelematicsCommandIncoming(HMDevice device, int id, int contentType, int length, byte[] data);
 
     //Crypto
     void HMCryptoHalGenerateNonce(byte[] nonce);
