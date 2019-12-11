@@ -11,6 +11,7 @@ jobject coreInterfaceRef;
 JNIEnv *envRef;
 
 jmethodID interfaceMethodHMBTHalInit;
+jmethodID interfaceMethodHMBTHalLog;
 jmethodID interfaceMethodHMBTHalScanStart;
 jmethodID interfaceMethodHMBTHalScanStop;
 jmethodID interfaceMethodHMBTHalAdvertisementStart;
@@ -41,6 +42,7 @@ jmethodID interfaceMethodHMApiCallbackEnteredProximity;
 jmethodID interfaceMethodHMApiCallbackExitedProximity;
 jmethodID interfaceMethodHMApiCallbackCustomCommandIncoming;
 jmethodID interfaceMethodHMApiCallbackCustomCommandResponse;
+jmethodID interfaceMethodHMApiCallbackCustomCommandResponseError;
 jmethodID interfaceMethodHMApiCallbackGetDeviceCertificateFailed;
 jmethodID interfaceMethodHMApiCallbackPairingRequested;
 jmethodID interfaceMethodHMApiCallbackTelematicsCommandIncoming;
@@ -48,6 +50,7 @@ jmethodID interfaceMethodHMApiCallbackTelematicsCommandIncoming;
 jmethodID interfaceMethodHMCryptoHalGenerateNonce;
 
 jmethodID interfaceMethodHMApiCallbackRevokeResponse;
+jmethodID interfaceMethodHMApiCallbackRevokeIncoming;
 
 jmethodID interfaceMethodHMApiCallbackErrorCommandIncoming;
 

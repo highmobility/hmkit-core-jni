@@ -24,6 +24,7 @@ void prepareCallbackFunctions(JNIEnv *env, jobject instance, jobject coreInterfa
     interfaceClassRef = env->GetObjectClass(coreInterface);
 
     interfaceMethodHMBTHalInit = env->GetMethodID(interfaceClassRef, "HMBTHalInit","()I");
+    interfaceMethodHMBTHalLog = env->GetMethodID(interfaceClassRef, "HMBTHalLog","(I[B)I");
     interfaceMethodHMBTHalScanStart = env->GetMethodID(interfaceClassRef, "HMBTHalScanStart","()I");
     interfaceMethodHMBTHalScanStop = env->GetMethodID(interfaceClassRef, "HMBTHalScanStop","()I");
     interfaceMethodHMBTHalAdvertisementStart = env->GetMethodID(interfaceClassRef, "HMBTHalAdvertisementStart","([B[B)I");
@@ -52,15 +53,17 @@ void prepareCallbackFunctions(JNIEnv *env, jobject instance, jobject coreInterfa
 
     interfaceMethodHMApiCallbackEnteredProximity = env->GetMethodID(interfaceClassRef, "HMApiCallbackEnteredProximity","(Lcom/highmobility/btcore/HMDevice;)V");
     interfaceMethodHMApiCallbackExitedProximity = env->GetMethodID(interfaceClassRef, "HMApiCallbackExitedProximity","(Lcom/highmobility/btcore/HMDevice;)V");
-    interfaceMethodHMApiCallbackCustomCommandIncoming = env->GetMethodID(interfaceClassRef, "HMApiCallbackCustomCommandIncoming","(Lcom/highmobility/btcore/HMDevice;[BI)V");
-    interfaceMethodHMApiCallbackCustomCommandResponse = env->GetMethodID(interfaceClassRef, "HMApiCallbackCustomCommandResponse","(Lcom/highmobility/btcore/HMDevice;[BI)V");
+    interfaceMethodHMApiCallbackCustomCommandIncoming = env->GetMethodID(interfaceClassRef, "HMApiCallbackCustomCommandIncoming","(Lcom/highmobility/btcore/HMDevice;I[BI)V");
+    interfaceMethodHMApiCallbackCustomCommandResponse = env->GetMethodID(interfaceClassRef, "HMApiCallbackCustomCommandResponse","(Lcom/highmobility/btcore/HMDevice;I[BI)V");
+    interfaceMethodHMApiCallbackCustomCommandResponseError = env->GetMethodID(interfaceClassRef, "HMApiCallbackCustomCommandResponseError","(Lcom/highmobility/btcore/HMDevice;I)V");
     interfaceMethodHMApiCallbackGetDeviceCertificateFailed = env->GetMethodID(interfaceClassRef, "HMApiCallbackGetDeviceCertificateFailed","(Lcom/highmobility/btcore/HMDevice;[B)I");
     interfaceMethodHMApiCallbackPairingRequested = env->GetMethodID(interfaceClassRef, "HMApiCallbackPairingRequested","(Lcom/highmobility/btcore/HMDevice;)I");
-    interfaceMethodHMApiCallbackTelematicsCommandIncoming = env->GetMethodID(interfaceClassRef, "HMApiCallbackTelematicsCommandIncoming","(Lcom/highmobility/btcore/HMDevice;II[B)V");
+    interfaceMethodHMApiCallbackTelematicsCommandIncoming = env->GetMethodID(interfaceClassRef, "HMApiCallbackTelematicsCommandIncoming","(Lcom/highmobility/btcore/HMDevice;III[B)V");
 
     interfaceMethodHMCryptoHalGenerateNonce  = env->GetMethodID(interfaceClassRef, "HMCryptoHalGenerateNonce","([B)V");
 
     interfaceMethodHMApiCallbackRevokeResponse = env->GetMethodID(interfaceClassRef, "HMApiCallbackRevokeResponse","(Lcom/highmobility/btcore/HMDevice;[BII)V");
+    interfaceMethodHMApiCallbackRevokeIncoming = env->GetMethodID(interfaceClassRef, "HMApiCallbackRevokeIncoming","(Lcom/highmobility/btcore/HMDevice;)V");
 
     interfaceMethodHMApiCallbackErrorCommandIncoming = env->GetMethodID(interfaceClassRef, "HMApiCallbackErrorCommandIncoming","(Lcom/highmobility/btcore/HMDevice;II)V");
 
@@ -305,6 +308,7 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCorelinkWriteResponse(JNIEnv *env, job
 
 JNIEXPORT void JNICALL
 Java_com_highmobility_btcore_HMBTCore_HMBTCoreSendCustomCommand(JNIEnv *env, jobject instance,jobject coreInterface,
+                                                                  jint contentType,
                                                                   jbyteArray data_, jint size,
                                                                   jbyteArray mac_) {
     try{
@@ -312,7 +316,7 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCoreSendCustomCommand(JNIEnv *env, job
         jbyte *data = env->GetByteArrayElements( data_, NULL);
         jbyte *mac = env->GetByteArrayElements( mac_, NULL);
 
-        sendSecureContainerUsingMac(0, (uint8_t*)mac, (uint8_t*)data, size, 0, 0, 1);
+        sendSecureContainerUsingMac(0, (uint8_t*)mac, contentType, (uint8_t*)data, size, 0, 0, 2);
 
         env->ReleaseByteArrayElements( data_, data, 0);
         env->ReleaseByteArrayElements( mac_, mac, 0);
@@ -435,7 +439,7 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCoreTelematicsReceiveData(JNIEnv *env,
 
 JNIEXPORT void JNICALL
 Java_com_highmobility_btcore_HMBTCore_HMBTCoreSendTelematicsCommand(JNIEnv *env, jobject instance,jobject coreInterface,
-                                                                      jbyteArray serial_, jbyteArray nonce_, jint length, jbyteArray data_) {
+                                                                      jbyteArray serial_, jbyteArray nonce_, jint contentType, jint length, jbyteArray data_) {
     try{
         prepareCallbackFunctions(env,instance,coreInterface);
 
@@ -443,7 +447,7 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCoreSendTelematicsCommand(JNIEnv *env,
         jbyte *nonce = env->GetByteArrayElements( nonce_, NULL);
         jbyte *data = env->GetByteArrayElements( data_, NULL);
 
-        hm_api_send_telematics_command(0, (uint8_t*)serial, (uint8_t*)nonce, length, (uint8_t*)data, 0, 0, 1);
+        hm_api_send_telematics_command(0, (uint8_t*)serial, (uint8_t*)nonce, contentType, length, (uint8_t*)data, 0, 0, 2);
 
         env->ReleaseByteArrayElements( data_, data, 0);
         env->ReleaseByteArrayElements( nonce_, nonce, 0);

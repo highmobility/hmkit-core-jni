@@ -1,18 +1,23 @@
-
 #include "hm_bt_debug_hal.h"
+#include "hmbtcore.h"
+
 #include <stdarg.h>
-#include <android/log.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 void hm_bt_debug_hal_log(const char *str, ...){
-  va_list args;
-  va_start(args, str);
-   __android_log_vprint(ANDROID_LOG_DEBUG, "HM BT Core", str, args);
-  va_end(args);
+    char *ptr;
+    va_list list;
+    va_start(list,str);
+    vasprintf(&ptr,str,list);
+    hm_bt_debug_hal_log_hex((uint8_t *)ptr, strlen(ptr));
+    free(ptr);
+    va_end(list);
 }
 
 void hm_bt_debug_hal_log_hex(const uint8_t *data, const uint16_t length){
-   uint16_t i;
-   for(i = 0 ; i < length ; i++){
-   __android_log_print(ANDROID_LOG_DEBUG, "HM BT Core", "%x",data[i]);
-  }
+   jbyteArray mac_ = (*envRef)->NewByteArray(envRef,length);
+   (*envRef)->SetByteArrayRegion(envRef, mac_, 0, length, (const jbyte*) data );
+   (*envRef)->CallIntMethod(envRef, coreInterfaceRef, interfaceMethodHMBTHalLog, 0, mac_);
 }
