@@ -10,51 +10,51 @@
 
 void prepareCallbackFunctions(JNIEnv *env, jobject instance, jobject coreInterface){
 
-    interfaceClassRef = (*env)->GetObjectClass(instance, coreInterface);
+    interfaceClassRef = (*env)->GetObjectClass(env, coreInterface);
 
-    interfaceMethodHMBTHalInit = (*env)->GetMethodID(instance, interfaceClassRef, "HMBTHalInit","()I");
-    interfaceMethodHMBTHalLog = (*env)->GetMethodID(instance, interfaceClassRef, "HMBTHalLog","(I[B)I");
-    interfaceMethodHMBTHalScanStart = (*env)->GetMethodID(instance, interfaceClassRef, "HMBTHalScanStart","()I");
-    interfaceMethodHMBTHalScanStop = (*env)->GetMethodID(instance, interfaceClassRef, "HMBTHalScanStop","()I");
-    interfaceMethodHMBTHalAdvertisementStart = (*env)->GetMethodID(instance, interfaceClassRef, "HMBTHalAdvertisementStart","([B[B)I");
-    interfaceMethodHMBTHalAdvertisementStop = (*env)->GetMethodID(instance, interfaceClassRef, "HMBTHalAdvertisementStop","()I");
-    interfaceMethodHMBTHalConnect = (*env)->GetMethodID(instance, interfaceClassRef, "HMBTHalConnect","([B)I");
-    interfaceMethodHMBTHalDisconnect = (*env)->GetMethodID(instance, interfaceClassRef, "HMBTHalDisconnect","([B)I");
-    interfaceMethodHMBTHalServiceDiscovery = (*env)->GetMethodID(instance, interfaceClassRef, "HMBTHalServiceDiscovery","([B)I");
-    interfaceMethodHMBTHalWriteData = (*env)->GetMethodID(instance, interfaceClassRef, "HMBTHalWriteData","([BI[BI)I");
-    interfaceMethodHMBTHalReadData = (*env)->GetMethodID(instance, interfaceClassRef, "HMBTHalReadData","([BII)I");
-    interfaceMethodHMBTHalTelematicsSendData = (*env)->GetMethodID(instance, interfaceClassRef, "HMBTHalTelematicsSendData","([B[BI[B)I");
+    interfaceMethodHMBTHalInit = (*env)->GetMethodID(env, interfaceClassRef, "HMBTHalInit","()I");
+    interfaceMethodHMBTHalLog = (*env)->GetMethodID(env, interfaceClassRef, "HMBTHalLog","(I[B)I");
+    interfaceMethodHMBTHalScanStart = (*env)->GetMethodID(env, interfaceClassRef, "HMBTHalScanStart","()I");
+    interfaceMethodHMBTHalScanStop = (*env)->GetMethodID(env, interfaceClassRef, "HMBTHalScanStop","()I");
+    interfaceMethodHMBTHalAdvertisementStart = (*env)->GetMethodID(env, interfaceClassRef, "HMBTHalAdvertisementStart","([B[B)I");
+    interfaceMethodHMBTHalAdvertisementStop = (*env)->GetMethodID(env, interfaceClassRef, "HMBTHalAdvertisementStop","()I");
+    interfaceMethodHMBTHalConnect = (*env)->GetMethodID(env, interfaceClassRef, "HMBTHalConnect","([B)I");
+    interfaceMethodHMBTHalDisconnect = (*env)->GetMethodID(env, interfaceClassRef, "HMBTHalDisconnect","([B)I");
+    interfaceMethodHMBTHalServiceDiscovery = (*env)->GetMethodID(env, interfaceClassRef, "HMBTHalServiceDiscovery","([B)I");
+    interfaceMethodHMBTHalWriteData = (*env)->GetMethodID(env, interfaceClassRef, "HMBTHalWriteData","([BI[BI)I");
+    interfaceMethodHMBTHalReadData = (*env)->GetMethodID(env, interfaceClassRef, "HMBTHalReadData","([BII)I");
+    interfaceMethodHMBTHalTelematicsSendData = (*env)->GetMethodID(env, interfaceClassRef, "HMBTHalTelematicsSendData","([B[BI[B)I");
 
-    interfaceMethodHMPersistenceHalgetSerial = (*env)->GetMethodID(instance, interfaceClassRef, "HMPersistenceHalgetSerial","([B)I");
-    interfaceMethodHMPersistenceHalgetLocalPublicKey = (*env)->GetMethodID(instance, interfaceClassRef, "HMPersistenceHalgetLocalPublicKey","([B)I");
-    interfaceMethodHMPersistenceHalgetLocalPrivateKey = (*env)->GetMethodID(instance, interfaceClassRef, "HMPersistenceHalgetLocalPrivateKey","([B)I");
-    interfaceMethodHMPersistenceHalgetDeviceCertificate = (*env)->GetMethodID(instance, interfaceClassRef, "HMPersistenceHalgetDeviceCertificate","([B)I");
-    interfaceMethodHMPersistenceHalgetCaPublicKey = (*env)->GetMethodID(instance, interfaceClassRef, "HMPersistenceHalgetCaPublicKey","([B)I");
-    interfaceMethodHMPersistenceHalgetOEMCaPublicKey = (*env)->GetMethodID(instance, interfaceClassRef, "HMPersistenceHalgetOEMCaPublicKey","([B)I");
-    interfaceMethodHMPersistenceHaladdPublicKey = (*env)->GetMethodID(instance, interfaceClassRef, "HMPersistenceHaladdPublicKey","([B[BI)I");
-    interfaceMethodHMPersistenceHalgetPublicKey = (*env)->GetMethodID(instance, interfaceClassRef, "HMPersistenceHalgetPublicKey","([B[B[I)I");
-    interfaceMethodHMPersistenceHalgetPublicKeyByIndex = (*env)->GetMethodID(instance, interfaceClassRef, "HMPersistenceHalgetPublicKeyByIndex","(I[B[I)I");
-    interfaceMethodHMPersistenceHalgetPublicKeyCount = (*env)->GetMethodID(instance, interfaceClassRef, "HMPersistenceHalgetPublicKeyCount","([I)I");
-    interfaceMethodHMPersistenceHalremovePublicKey = (*env)->GetMethodID(instance, interfaceClassRef, "HMPersistenceHalremovePublicKey","([B)I");
-    interfaceMethodHMPersistenceHaladdStoredCertificate = (*env)->GetMethodID(instance, interfaceClassRef, "HMPersistenceHaladdStoredCertificate","([BI)I");
-    interfaceMethodHMPersistenceHalgetStoredCertificate = (*env)->GetMethodID(instance, interfaceClassRef, "HMPersistenceHalgetStoredCertificate","([B[B[I)I");
-    interfaceMethodHMPersistenceHaleraseStoredCertificate = (*env)->GetMethodID(instance, interfaceClassRef, "HMPersistenceHaleraseStoredCertificate","([B)I");
+    interfaceMethodHMPersistenceHalgetSerial = (*env)->GetMethodID(env, interfaceClassRef, "HMPersistenceHalgetSerial","([B)I");
+    interfaceMethodHMPersistenceHalgetLocalPublicKey = (*env)->GetMethodID(env, interfaceClassRef, "HMPersistenceHalgetLocalPublicKey","([B)I");
+    interfaceMethodHMPersistenceHalgetLocalPrivateKey = (*env)->GetMethodID(env, interfaceClassRef, "HMPersistenceHalgetLocalPrivateKey","([B)I");
+    interfaceMethodHMPersistenceHalgetDeviceCertificate = (*env)->GetMethodID(env, interfaceClassRef, "HMPersistenceHalgetDeviceCertificate","([B)I");
+    interfaceMethodHMPersistenceHalgetCaPublicKey = (*env)->GetMethodID(env, interfaceClassRef, "HMPersistenceHalgetCaPublicKey","([B)I");
+    interfaceMethodHMPersistenceHalgetOEMCaPublicKey = (*env)->GetMethodID(env, interfaceClassRef, "HMPersistenceHalgetOEMCaPublicKey","([B)I");
+    interfaceMethodHMPersistenceHaladdPublicKey = (*env)->GetMethodID(env, interfaceClassRef, "HMPersistenceHaladdPublicKey","([B[BI)I");
+    interfaceMethodHMPersistenceHalgetPublicKey = (*env)->GetMethodID(env, interfaceClassRef, "HMPersistenceHalgetPublicKey","([B[B[I)I");
+    interfaceMethodHMPersistenceHalgetPublicKeyByIndex = (*env)->GetMethodID(env, interfaceClassRef, "HMPersistenceHalgetPublicKeyByIndex","(I[B[I)I");
+    interfaceMethodHMPersistenceHalgetPublicKeyCount = (*env)->GetMethodID(env, interfaceClassRef, "HMPersistenceHalgetPublicKeyCount","([I)I");
+    interfaceMethodHMPersistenceHalremovePublicKey = (*env)->GetMethodID(env, interfaceClassRef, "HMPersistenceHalremovePublicKey","([B)I");
+    interfaceMethodHMPersistenceHaladdStoredCertificate = (*env)->GetMethodID(env, interfaceClassRef, "HMPersistenceHaladdStoredCertificate","([BI)I");
+    interfaceMethodHMPersistenceHalgetStoredCertificate = (*env)->GetMethodID(env, interfaceClassRef, "HMPersistenceHalgetStoredCertificate","([B[B[I)I");
+    interfaceMethodHMPersistenceHaleraseStoredCertificate = (*env)->GetMethodID(env, interfaceClassRef, "HMPersistenceHaleraseStoredCertificate","([B)I");
 
-    interfaceMethodHMApiCallbackEnteredProximity = (*env)->GetMethodID(instance, interfaceClassRef, "HMApiCallbackEnteredProximity","(Lcom/highmobility/btcore/HMDevice;)V");
-    interfaceMethodHMApiCallbackExitedProximity = (*env)->GetMethodID(instance, interfaceClassRef, "HMApiCallbackExitedProximity","(Lcom/highmobility/btcore/HMDevice;)V");
-    interfaceMethodHMApiCallbackCustomCommandIncoming = (*env)->GetMethodID(instance, interfaceClassRef, "HMApiCallbackCustomCommandIncoming","(Lcom/highmobility/btcore/HMDevice;I[BI)V");
-    interfaceMethodHMApiCallbackCustomCommandResponse = (*env)->GetMethodID(instance, interfaceClassRef, "HMApiCallbackCustomCommandResponse","(Lcom/highmobility/btcore/HMDevice;I[BI)V");
-    interfaceMethodHMApiCallbackCustomCommandResponseError = (*env)->GetMethodID(instance, interfaceClassRef, "HMApiCallbackCustomCommandResponseError","(Lcom/highmobility/btcore/HMDevice;I)V");
-    interfaceMethodHMApiCallbackGetDeviceCertificateFailed = (*env)->GetMethodID(instance, interfaceClassRef, "HMApiCallbackGetDeviceCertificateFailed","(Lcom/highmobility/btcore/HMDevice;[B)I");
-    interfaceMethodHMApiCallbackPairingRequested = (*env)->GetMethodID(instance, interfaceClassRef, "HMApiCallbackPairingRequested","(Lcom/highmobility/btcore/HMDevice;)I");
-    interfaceMethodHMApiCallbackTelematicsCommandIncoming = (*env)->GetMethodID(instance, interfaceClassRef, "HMApiCallbackTelematicsCommandIncoming","(Lcom/highmobility/btcore/HMDevice;III[B)V");
+    interfaceMethodHMApiCallbackEnteredProximity = (*env)->GetMethodID(env, interfaceClassRef, "HMApiCallbackEnteredProximity","(Lcom/highmobility/btcore/HMDevice;)V");
+    interfaceMethodHMApiCallbackExitedProximity = (*env)->GetMethodID(env, interfaceClassRef, "HMApiCallbackExitedProximity","(Lcom/highmobility/btcore/HMDevice;)V");
+    interfaceMethodHMApiCallbackCustomCommandIncoming = (*env)->GetMethodID(env, interfaceClassRef, "HMApiCallbackCustomCommandIncoming","(Lcom/highmobility/btcore/HMDevice;I[BI)V");
+    interfaceMethodHMApiCallbackCustomCommandResponse = (*env)->GetMethodID(env, interfaceClassRef, "HMApiCallbackCustomCommandResponse","(Lcom/highmobility/btcore/HMDevice;I[BI)V");
+    interfaceMethodHMApiCallbackCustomCommandResponseError = (*env)->GetMethodID(env, interfaceClassRef, "HMApiCallbackCustomCommandResponseError","(Lcom/highmobility/btcore/HMDevice;I)V");
+    interfaceMethodHMApiCallbackGetDeviceCertificateFailed = (*env)->GetMethodID(env, interfaceClassRef, "HMApiCallbackGetDeviceCertificateFailed","(Lcom/highmobility/btcore/HMDevice;[B)I");
+    interfaceMethodHMApiCallbackPairingRequested = (*env)->GetMethodID(env, interfaceClassRef, "HMApiCallbackPairingRequested","(Lcom/highmobility/btcore/HMDevice;)I");
+    interfaceMethodHMApiCallbackTelematicsCommandIncoming = (*env)->GetMethodID(env, interfaceClassRef, "HMApiCallbackTelematicsCommandIncoming","(Lcom/highmobility/btcore/HMDevice;III[B)V");
 
-    interfaceMethodHMCryptoHalGenerateNonce  = (*env)->GetMethodID(instance, interfaceClassRef, "HMCryptoHalGenerateNonce","([B)V");
+    interfaceMethodHMCryptoHalGenerateNonce  = (*env)->GetMethodID(env, interfaceClassRef, "HMCryptoHalGenerateNonce","([B)V");
 
-    interfaceMethodHMApiCallbackRevokeResponse = (*env)->GetMethodID(instance, interfaceClassRef, "HMApiCallbackRevokeResponse","(Lcom/highmobility/btcore/HMDevice;[BII)V");
-    interfaceMethodHMApiCallbackRevokeIncoming = (*env)->GetMethodID(instance, interfaceClassRef, "HMApiCallbackRevokeIncoming","(Lcom/highmobility/btcore/HMDevice;)V");
+    interfaceMethodHMApiCallbackRevokeResponse = (*env)->GetMethodID(env, interfaceClassRef, "HMApiCallbackRevokeResponse","(Lcom/highmobility/btcore/HMDevice;[BII)V");
+    interfaceMethodHMApiCallbackRevokeIncoming = (*env)->GetMethodID(env, interfaceClassRef, "HMApiCallbackRevokeIncoming","(Lcom/highmobility/btcore/HMDevice;)V");
 
-    interfaceMethodHMApiCallbackErrorCommandIncoming = (*env)->GetMethodID(instance, interfaceClassRef, "HMApiCallbackErrorCommandIncoming","(Lcom/highmobility/btcore/HMDevice;II)V");
+    interfaceMethodHMApiCallbackErrorCommandIncoming = (*env)->GetMethodID(env, interfaceClassRef, "HMApiCallbackErrorCommandIncoming","(Lcom/highmobility/btcore/HMDevice;II)V");
 
     envRef = env;
     coreInterfaceRef = coreInterface;
