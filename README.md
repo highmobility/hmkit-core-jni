@@ -10,3 +10,7 @@ Android/OEM repositories.
 
 
 OpenSSL binaries for Linux are 1.1.0i, others 1.0.2.m.
+
+### Setup
+
+* git submodule update --init --recursive
