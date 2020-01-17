@@ -21,12 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-#include "hm_bt_persistence_hal.h"
+#include "hmkit_core_persistence_hal.h"
 #include "hmbtcore.h"
-#include "hm_bt_debug_hal.h"
+#include "hmkit_core_debug_hal.h"
 #include <string.h>
 
-uint32_t hm_bt_persistence_hal_get_serial(uint64_t appContxtId, uint8_t *serial){
+uint32_t hmkit_core_persistence_hal_get_serial(uint64_t appContxtId, uint8_t *serial){
 
   jbyteArray serial_ = (*envRef)->NewByteArray(envRef,9);
   (*envRef)->SetByteArrayRegion(envRef, serial_, 0, 9, (const jbyte*) serial );
@@ -43,7 +43,7 @@ uint32_t hm_bt_persistence_hal_get_serial(uint64_t appContxtId, uint8_t *serial)
   return ret;
 }
 
-uint32_t hm_bt_persistence_hal_get_local_public_key(uint64_t appContxtId, uint8_t *public){
+uint32_t hmkit_core_persistence_hal_get_local_public_key(uint64_t appContxtId, uint8_t *public){
 
   jbyteArray public_ = (*envRef)->NewByteArray(envRef,64);
   (*envRef)->SetByteArrayRegion(envRef, public_, 0, 64, (const jbyte*) public );
@@ -60,7 +60,7 @@ uint32_t hm_bt_persistence_hal_get_local_public_key(uint64_t appContxtId, uint8_
   return ret;
 }
 
-uint32_t hm_bt_persistence_hal_get_local_private_key(uint64_t appContxtId, uint8_t *private){
+uint32_t hmkit_core_persistence_hal_get_local_private_key(uint64_t appContxtId, uint8_t *private){
 
   jbyteArray private_ = (*envRef)->NewByteArray(envRef,32);
   (*envRef)->SetByteArrayRegion(envRef, private_, 0, 32, (const jbyte*) private );
@@ -77,7 +77,7 @@ uint32_t hm_bt_persistence_hal_get_local_private_key(uint64_t appContxtId, uint8
   return ret;
 }
 
-uint32_t hm_bt_persistence_hal_get_device_certificate(uint64_t appContxtId, uint8_t *cert){
+uint32_t hmkit_core_persistence_hal_get_device_certificate(uint64_t appContxtId, uint8_t *cert){
 
   jbyteArray cert_ = (*envRef)->NewByteArray(envRef,153);
   (*envRef)->SetByteArrayRegion(envRef, cert_, 0, 153, (const jbyte*) cert );
@@ -94,7 +94,7 @@ uint32_t hm_bt_persistence_hal_get_device_certificate(uint64_t appContxtId, uint
   return ret;
 }
 
-uint32_t hm_bt_persistence_hal_get_ca_public_key(uint64_t appContxtId, uint8_t *public){
+uint32_t hmkit_core_persistence_hal_get_ca_public_key(uint64_t appContxtId, uint8_t *public){
 
   jbyteArray public_ = (*envRef)->NewByteArray(envRef,64);
   (*envRef)->SetByteArrayRegion(envRef, public_, 0, 64, (const jbyte*) public );
@@ -111,7 +111,7 @@ uint32_t hm_bt_persistence_hal_get_ca_public_key(uint64_t appContxtId, uint8_t *
   return ret;
 }
 
-uint32_t hm_bt_persistence_hal_get_oem_ca_public_key(uint64_t appContxtId, uint8_t *public){
+uint32_t hmkit_core_persistence_hal_get_oem_ca_public_key(uint64_t appContxtId, uint8_t *public){
   jbyteArray public_ = (*envRef)->NewByteArray(envRef,64);
   (*envRef)->SetByteArrayRegion(envRef, public_, 0, 64, (const jbyte*) public );
   jint ret = (*envRef)->CallIntMethod(envRef, coreInterfaceRef, interfaceMethodHMPersistenceHalgetOEMCaPublicKey, public_);
@@ -127,7 +127,7 @@ uint32_t hm_bt_persistence_hal_get_oem_ca_public_key(uint64_t appContxtId, uint8
   return ret;
 }
 
-uint32_t hm_bt_persistence_hal_add_access_certificate(uint64_t appContxtId, uint8_t *serial, uint8_t *cert, uint16_t size){
+uint32_t hmkit_core_persistence_hal_add_access_certificate(uint64_t appContxtId, uint8_t *serial, uint8_t *cert, uint16_t size){
 
   jbyteArray serial_ = (*envRef)->NewByteArray(envRef,9);
   (*envRef)->SetByteArrayRegion(envRef, serial_, 0, 9, (const jbyte*) serial );
@@ -145,7 +145,7 @@ uint32_t hm_bt_persistence_hal_add_access_certificate(uint64_t appContxtId, uint
   return ret;
 }
 
-uint32_t hm_bt_persistence_hal_get_access_certificate_count(uint64_t appContxtId, uint8_t *count){
+uint32_t hmkit_core_persistence_hal_get_access_certificate_count(uint64_t appContxtId, uint8_t *count){
 
   jintArray count_ = (*envRef)->NewIntArray(envRef,1);
   (*envRef)->SetIntArrayRegion(envRef, count_, 0, 1, (const jint*) count );
@@ -167,7 +167,7 @@ uint32_t hm_bt_persistence_hal_get_access_certificate_count(uint64_t appContxtId
   return ret;
 }
 
-uint32_t hm_bt_persistence_hal_get_access_certificate(uint64_t appContxtId, uint8_t *serial, uint8_t *cert, uint16_t *size){
+uint32_t hmkit_core_persistence_hal_get_access_certificate(uint64_t appContxtId, uint8_t *serial, uint8_t *cert, uint16_t *size){
 
   jbyteArray serial_ = (*envRef)->NewByteArray(envRef,9);
   (*envRef)->SetByteArrayRegion(envRef, serial_, 0, 9, (const jbyte*) serial );
@@ -201,7 +201,7 @@ uint32_t hm_bt_persistence_hal_get_access_certificate(uint64_t appContxtId, uint
   return ret;
 }
 
-uint32_t hm_bt_persistence_hal_get_access_certificate_by_index(uint64_t appContxtId, uint8_t index, uint8_t *cert, uint16_t *size){
+uint32_t hmkit_core_persistence_hal_get_access_certificate_by_index(uint64_t appContxtId, uint8_t index, uint8_t *cert, uint16_t *size){
 
     jbyteArray cert_ = (*envRef)->NewByteArray(envRef,178);
     (*envRef)->SetByteArrayRegion(envRef, cert_, 0, 178, (const jbyte*) cert );
@@ -229,7 +229,7 @@ uint32_t hm_bt_persistence_hal_get_access_certificate_by_index(uint64_t appContx
   return ret;
 }
 
-uint32_t hm_bt_persistence_hal_remove_access_certificate(uint64_t appContxtId, hm_certificate_t *certificate){
+uint32_t hmkit_core_persistence_hal_remove_access_certificate(uint64_t appContxtId, hmkit_core_certificate_t *certificate){
 
   jbyteArray serial_ = (*envRef)->NewByteArray(envRef,9);
   (*envRef)->SetByteArrayRegion(envRef, serial_, 0, 9, (const jbyte*) certificate->gaining_serial );
@@ -243,12 +243,12 @@ uint32_t hm_bt_persistence_hal_remove_access_certificate(uint64_t appContxtId, h
   return ret;
 }
 
-uint32_t hm_bt_persistence_hal_erase_access_certificate(uint64_t appContxtId, hm_certificate_t *certificate){
+uint32_t hmkit_core_persistence_hal_erase_access_certificate(uint64_t appContxtId, hmkit_core_certificate_t *certificate){
 
     return 0;
 }
 
-uint32_t hm_bt_persistence_hal_add_stored_certificate(uint64_t appContxtId, uint8_t *cert, uint16_t size){
+uint32_t hmkit_core_persistence_hal_add_stored_certificate(uint64_t appContxtId, uint8_t *cert, uint16_t size){
 
   jbyteArray cert_ = (*envRef)->NewByteArray(envRef,9);
   (*envRef)->SetByteArrayRegion(envRef, cert_, 0, 9, (const jbyte*) cert );
@@ -262,7 +262,7 @@ uint32_t hm_bt_persistence_hal_add_stored_certificate(uint64_t appContxtId, uint
   return ret;
 }
 
-uint32_t hm_bt_persistence_hal_get_stored_certificate(uint64_t appContxtId, uint8_t *serial, uint8_t *cert, uint16_t *size){
+uint32_t hmkit_core_persistence_hal_get_stored_certificate(uint64_t appContxtId, uint8_t *serial, uint8_t *cert, uint16_t *size){
 
   jbyteArray serial_ = (*envRef)->NewByteArray(envRef,9);
   (*envRef)->SetByteArrayRegion(envRef, serial_, 0, 9, (const jbyte*) serial );
@@ -289,7 +289,7 @@ uint32_t hm_bt_persistence_hal_get_stored_certificate(uint64_t appContxtId, uint
   return ret;
 }
 
-uint32_t hm_bt_persistence_hal_erase_stored_certificate(uint64_t appContxtId, uint8_t *serial){
+uint32_t hmkit_core_persistence_hal_erase_stored_certificate(uint64_t appContxtId, uint8_t *serial){
 
   jbyteArray serial_ = (*envRef)->NewByteArray(envRef,9);
   (*envRef)->SetByteArrayRegion(envRef, serial_, 0, 9, (const jbyte*) serial );
@@ -303,22 +303,22 @@ uint32_t hm_bt_persistence_hal_erase_stored_certificate(uint64_t appContxtId, ui
   return ret;
 }
 
-uint32_t hm_bt_persistence_hal_get_appid_for_issuer_count(uint64_t appContxtId, uint8_t *issuer, uint8_t *count){
+uint32_t hmkit_core_persistence_hal_get_appid_for_issuer_count(uint64_t appContxtId, uint8_t *issuer, uint8_t *count){
  return 0;
 }
 
-uint32_t hm_bt_persistence_hal_get_appid_for_issuer(uint64_t appContxtId, uint8_t *issuer, uint8_t index, uint8_t *appid){
+uint32_t hmkit_core_persistence_hal_get_appid_for_issuer(uint64_t appContxtId, uint8_t *issuer, uint8_t index, uint8_t *appid){
  return 0;
 }
 
-uint32_t hm_bt_persistence_hel_set_command_count(uint64_t appContxtId, uint8_t *serial, uint8_t command, uint8_t count){
+uint32_t hmkit_core_persistence_hel_set_command_count(uint64_t appContxtId, uint8_t *serial, uint8_t command, uint8_t count){
   return 0;
 }
 
-uint32_t hm_bt_persistence_hel_get_command_count(uint64_t appContxtId, uint8_t *serial, uint8_t command, uint8_t *count){
+uint32_t hmkit_core_persistence_hel_get_command_count(uint64_t appContxtId, uint8_t *serial, uint8_t command, uint8_t *count){
   return 0;
 }
 
-uint32_t hm_bt_persistence_hel_remove_all_command_counts(uint64_t appContxtId, uint8_t *serial){
+uint32_t hmkit_core_persistence_hel_remove_all_command_counts(uint64_t appContxtId, uint8_t *serial){
   return 0;
 }

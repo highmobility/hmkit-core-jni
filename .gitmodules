@@ -1,9 +1,9 @@
-[submodule "crypto-c"]
-	path = crypto-c
-	url = git@bitbucket.org:highmobility/crypto-c.git
-[submodule "high-mobility-bt-core"]
-	path = high-mobility-bt-core
-	url = git@bitbucket.org:highmobility/high-mobility-bt-core.git
 [submodule "openssl"]
 	path = openssl
 	url = https://github.com/openssl/openssl.git
+[submodule "hmkit-core"]
+	path = hmkit-core
+	url = https://github.com/highmobility/hmkit-core.git
+[submodule "hmkit-crypto-c"]
+	path = hmkit-crypto-c
+	url = https://github.com/highmobility/hmkit-crypto-c.git
