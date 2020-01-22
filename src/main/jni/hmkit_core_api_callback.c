@@ -21,39 +21,39 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-#include "hm_api_callback.h"
-#include "hm_cert.h"
+#include "hmkit_core_api_callback.h"
+#include "hmkit_core_cert.h"
 #include <string.h>
-#include "hm_config.h"
+#include "hmkit_core_config.h"
 #include "hmbtcore.h"
-#include "hm_api.h"
+#include "hmkit_core_api.h"
 
-void hm_api_callback_init()
+void hmkit_core_api_callback_init()
 {
 
 }
 
-void hm_api_callback_ping()
+void hmkit_core_api_callback_ping()
 {
 
 }
 
-void hm_api_callback_clock()
+void hmkit_core_api_callback_clock()
 {
 
 }
 
-void hm_api_callback_authorised_device_added(hm_device_t *device, uint8_t error)
+void hmkit_core_api_callback_authorised_device_added(hmkit_core_device_t *device, uint8_t error)
 {
 
 }
 
-void hm_api_callback_authorised_device_updated(hm_device_t *device, uint8_t error)
+void hmkit_core_api_callback_authorised_device_updated(hmkit_core_device_t *device, uint8_t error)
 {
 
 }
 
-void hm_api_callback_entered_proximity(uint64_t appContxtId, hm_device_t *device)
+void hmkit_core_api_callback_entered_proximity(uint64_t appContxtId, hmkit_core_device_t *device)
 {
     jclass cls = (*envRef)->FindClass(envRef, "com/highmobility/btcore/HMDevice");
     jmethodID constructor = (*envRef)->GetMethodID(envRef,cls, "<init>", "()V");
@@ -86,12 +86,12 @@ void hm_api_callback_entered_proximity(uint64_t appContxtId, hm_device_t *device
       }
 }
 
-void hm_api_callback_proximity_measured(uint64_t appContxtId, hm_device_t *device, uint8_t receiver_count, hm_receiver_t *receivers)
+void hmkit_core_api_callback_proximity_measured(uint64_t appContxtId, hmkit_core_device_t *device, uint8_t receiver_count, hmkit_core_receiver_t *receivers)
 {
 
 }
 
-void hm_api_callback_exited_proximity(uint64_t appContxtId, hm_device_t *device)
+void hmkit_core_api_callback_exited_proximity(uint64_t appContxtId, hmkit_core_device_t *device)
 {
     jclass cls = (*envRef)->FindClass(envRef, "com/highmobility/btcore/HMDevice");
     jmethodID constructor = (*envRef)->GetMethodID(envRef,cls, "<init>", "()V");
@@ -123,7 +123,7 @@ void hm_api_callback_exited_proximity(uint64_t appContxtId, hm_device_t *device)
     }
 }
 
-void hm_api_callback_command_incoming(uint64_t appContxtId, hm_device_t *device, uint8_t content_type, uint8_t *data, uint32_t length, uint8_t *respID, uint16_t respID_size, uint8_t version)
+void hmkit_core_api_callback_command_incoming(uint64_t appContxtId, hmkit_core_device_t *device, uint8_t content_type, uint8_t *data, uint32_t length, uint8_t *respID, uint16_t respID_size, uint8_t version)
 {
     jclass cls = (*envRef)->FindClass(envRef, "com/highmobility/btcore/HMDevice");
     jmethodID constructor = (*envRef)->GetMethodID(envRef,cls, "<init>", "()V");
@@ -158,7 +158,7 @@ void hm_api_callback_command_incoming(uint64_t appContxtId, hm_device_t *device,
       }
 }
 
-void hm_api_callback_command_response(uint64_t appContxtId, hm_device_t *device, uint8_t content_type, uint8_t *data, uint32_t length, uint8_t *respID, uint16_t respID_size, uint8_t version)
+void hmkit_core_api_callback_command_response(uint64_t appContxtId, hmkit_core_device_t *device, uint8_t content_type, uint8_t *data, uint32_t length, uint8_t *respID, uint16_t respID_size, uint8_t version)
 {
     jclass cls = (*envRef)->FindClass(envRef, "com/highmobility/btcore/HMDevice");
     jmethodID constructor = (*envRef)->GetMethodID(envRef,cls, "<init>", "()V");
@@ -193,7 +193,7 @@ void hm_api_callback_command_response(uint64_t appContxtId, hm_device_t *device,
       }
 }
 
-void hm_api_callback_command_response_error(uint64_t appContxtId, hm_device_t *device, uint8_t errortype)
+void hmkit_core_api_callback_command_response_error(uint64_t appContxtId, hmkit_core_device_t *device, uint8_t errortype)
 {
     jclass cls = (*envRef)->FindClass(envRef, "com/highmobility/btcore/HMDevice");
     jmethodID constructor = (*envRef)->GetMethodID(envRef,cls, "<init>", "()V");
@@ -225,7 +225,7 @@ void hm_api_callback_command_response_error(uint64_t appContxtId, hm_device_t *d
     }
 }
 
-void hm_api_callback_error_command_incoming(uint64_t appContxtId, hm_device_t *device, uint8_t command, uint8_t errorType){
+void hmkit_core_api_callback_error_command_incoming(uint64_t appContxtId, hmkit_core_device_t *device, uint8_t command, uint8_t errorType){
 
     jclass cls = (*envRef)->FindClass(envRef, "com/highmobility/btcore/HMDevice");
     jmethodID constructor = (*envRef)->GetMethodID(envRef,cls, "<init>", "()V");
@@ -257,7 +257,7 @@ void hm_api_callback_error_command_incoming(uint64_t appContxtId, hm_device_t *d
       }
 }
 
-uint32_t hm_api_callback_get_device_certificate_failed(uint64_t appContxtId, hm_device_t *device, uint8_t *nonce)
+uint32_t hmkit_core_api_callback_get_device_certificate_failed(uint64_t appContxtId, hmkit_core_device_t *device, uint8_t *nonce)
 {
     jclass cls = (*envRef)->FindClass(envRef, "com/highmobility/btcore/HMDevice");
     jmethodID constructor = (*envRef)->GetMethodID(envRef,cls, "<init>", "()V");
@@ -298,12 +298,12 @@ uint32_t hm_api_callback_get_device_certificate_failed(uint64_t appContxtId, hm_
     return ret;
 }
 
-void hm_api_callback_access_certificate_registered(uint64_t appContxtId, hm_device_t *device, uint8_t *public_key, uint8_t error)
+void hmkit_core_api_callback_access_certificate_registered(uint64_t appContxtId, hmkit_core_device_t *device, uint8_t *public_key, uint8_t error)
 {
 
 }
 
-uint32_t hm_api_callback_pairing_requested(uint64_t appContxtId, hm_device_t *device){
+uint32_t hmkit_core_api_callback_pairing_requested(uint64_t appContxtId, hmkit_core_device_t *device){
 
     jclass cls = (*envRef)->FindClass(envRef, "com/highmobility/btcore/HMDevice");
     jmethodID constructor = (*envRef)->GetMethodID(envRef,cls, "<init>", "()V");
@@ -338,7 +338,7 @@ uint32_t hm_api_callback_pairing_requested(uint64_t appContxtId, hm_device_t *de
     return ret;
 }
 
-void hm_api_callback_telematics_command_incoming(uint64_t appContxtId, hm_device_t *device, uint8_t id, uint8_t content_type, uint32_t length, uint8_t *data, uint8_t *respID, uint16_t respID_size, uint8_t version){
+void hmkit_core_api_callback_telematics_command_incoming(uint64_t appContxtId, hmkit_core_device_t *device, uint8_t id, uint8_t content_type, uint32_t length, uint8_t *data, uint8_t *respID, uint16_t respID_size, uint8_t version){
     jclass cls = (*envRef)->FindClass(envRef, "com/highmobility/btcore/HMDevice");
     jmethodID constructor = (*envRef)->GetMethodID(envRef,cls, "<init>", "()V");
     jmethodID setMac = (*envRef)->GetMethodID(envRef,cls, "setMac", "([B)V");
@@ -372,7 +372,7 @@ void hm_api_callback_telematics_command_incoming(uint64_t appContxtId, hm_device
       }
 }
 
-void hm_api_callback_revoke_response(uint64_t appContxtId, hm_device_t *device, uint8_t *data, uint16_t length, uint8_t status){
+void hmkit_core_api_callback_revoke_response(uint64_t appContxtId, hmkit_core_device_t *device, uint8_t *data, uint16_t length, uint8_t status){
 jclass cls = (*envRef)->FindClass(envRef, "com/highmobility/btcore/HMDevice");
     jmethodID constructor = (*envRef)->GetMethodID(envRef,cls, "<init>", "()V");
     jmethodID setMac = (*envRef)->GetMethodID(envRef,cls, "setMac", "([B)V");
@@ -406,7 +406,7 @@ jclass cls = (*envRef)->FindClass(envRef, "com/highmobility/btcore/HMDevice");
       }
 }
 
-void hm_api_callback_revoke_incoming(uint64_t appContxtId, hm_device_t *device, uint8_t *data, uint16_t *size){
+void hmkit_core_api_callback_revoke_incoming(uint64_t appContxtId, hmkit_core_device_t *device, uint8_t *data, uint16_t *size){
     jclass cls = (*envRef)->FindClass(envRef, "com/highmobility/btcore/HMDevice");
     jmethodID constructor = (*envRef)->GetMethodID(envRef,cls, "<init>", "()V");
     jmethodID setMac = (*envRef)->GetMethodID(envRef,cls, "setMac", "([B)V");

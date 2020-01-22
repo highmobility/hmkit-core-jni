@@ -1,11 +1,11 @@
 #include <jni.h>
 #include <stddef.h>
-#include "hm_bt_core.h"
+#include "hmkit_core.h"
 #include "Crypto.h"
-#include "hm_bt_debug_hal.h"
-#include "hm_cert.h"
-#include "hm_api.h"
-#include "hm_bt_log.h"
+#include "hmkit_core_debug_hal.h"
+#include "hmkit_core_cert.h"
+#include "hmkit_core_api.h"
+#include "hmkit_core_log.h"
 #include "hmbtcore.h"
 
 void prepareCallbackFunctions(JNIEnv *env, jobject instance, jobject coreInterface){
@@ -65,14 +65,14 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCoreInit(JNIEnv *env, jobject instance
                                                      jobject coreInterface) {
 
     prepareCallbackFunctions(env,instance,coreInterface);
-    hm_bt_core_init();
+    hmkit_core_init();
 }
 
 JNIEXPORT void JNICALL
 Java_com_highmobility_btcore_HMBTCore_HMBTCoreClock(JNIEnv *env, jobject instance,jobject coreInterface) {
 
     prepareCallbackFunctions(env,instance,coreInterface);
-    hm_bt_core_clock();
+    hmkit_core_clock();
 }
 
 JNIEXPORT void JNICALL
@@ -85,7 +85,7 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCoreSensingReadNotification(JNIEnv *en
     prepareCallbackFunctions(env,instance,coreInterface);
     jbyte *mac = (*env)->GetByteArrayElements(env,  mac_, NULL);
 
-    hm_bt_core_sensing_read_notification(0, (uint8_t*)mac, (hm_characteristic)characteriistic_);
+    hmkit_core_sensing_read_notification(0, (uint8_t*)mac, (hmkit_core_characteristic)characteriistic_);
 
     (*env)->ReleaseByteArrayElements(env,  mac_, mac, 0);
 
@@ -101,7 +101,7 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCoreSensingReadResponse(JNIEnv *env, j
     jbyte *data = (*env)->GetByteArrayElements(env,  data_, NULL);
     jbyte *mac = (*env)->GetByteArrayElements(env,  mac_, NULL);
 
-    hm_bt_core_sensing_read_response(0, (uint8_t*)data,size,offset,(uint8_t*)mac,(hm_characteristic)characteriistic_);
+    hmkit_core_sensing_read_response(0, (uint8_t*)data,size,offset,(uint8_t*)mac,(hmkit_core_characteristic)characteriistic_);
 
     (*env)->ReleaseByteArrayElements(env,  data_, data, 0);
     (*env)->ReleaseByteArrayElements(env,  mac_, mac, 0);
@@ -116,7 +116,7 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCoreSensingWriteResponse(JNIEnv *env, 
     prepareCallbackFunctions(env,instance,coreInterface);
     jbyte *mac = (*env)->GetByteArrayElements(env,  mac_, NULL);
 
-    hm_bt_core_sensing_write_response(0, (uint8_t*)mac,(hm_characteristic)characteriistic_);
+    hmkit_core_sensing_write_response(0, (uint8_t*)mac,(hmkit_core_characteristic)characteriistic_);
 
     (*env)->ReleaseByteArrayElements(env,  mac_, mac, 0);
 
@@ -131,7 +131,7 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCoreSensingPingNotification(JNIEnv *en
     prepareCallbackFunctions(env,instance,coreInterface);
     jbyte *mac = (*env)->GetByteArrayElements(env,  mac_, NULL);
 
-    hm_bt_core_sensing_ping_notification(0, (uint8_t*)mac,(hm_characteristic)characteriistic_);
+    hmkit_core_sensing_ping_notification(0, (uint8_t*)mac,(hmkit_core_characteristic)characteriistic_);
 
     (*env)->ReleaseByteArrayElements(env,  mac_, mac, 0);
 
@@ -148,7 +148,7 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCoreSensingProcessAdvertisement(JNIEnv
     jbyte *mac = (*env)->GetByteArrayElements(env,  mac_, NULL);
     jbyte *data = (*env)->GetByteArrayElements(env,  data_, NULL);
 
-    hm_bt_core_sensing_process_advertisement((uint8_t*)mac,0, (uint8_t*)data,size);
+    hmkit_core_sensing_process_advertisement((uint8_t*)mac,0, (uint8_t*)data,size);
 
     (*env)->ReleaseByteArrayElements(env,  mac_, mac, 0);
     (*env)->ReleaseByteArrayElements(env,  data_, data, 0);
@@ -162,7 +162,7 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCoreSensingDiscoveryEvent(JNIEnv *env,
     prepareCallbackFunctions(env,instance,coreInterface);
     jbyte *mac = (*env)->GetByteArrayElements(env,  mac_, NULL);
 
-    hm_bt_core_sensing_discovery_event((uint8_t*)mac);
+    hmkit_core_sensing_discovery_event((uint8_t*)mac);
 
     (*env)->ReleaseByteArrayElements(env,  mac_, mac, 0);
 
@@ -172,7 +172,7 @@ JNIEXPORT void JNICALL
 Java_com_highmobility_btcore_HMBTCore_HMBTCoreSensingScanStart(JNIEnv *env, jobject instance, jobject coreInterface) {
 
     prepareCallbackFunctions(env,instance,coreInterface);
-    hm_bt_core_sensing_scan_start();
+    hmkit_core_sensing_scan_start();
 
 }
 
@@ -183,7 +183,7 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCoreSensingConnect(JNIEnv *env, jobjec
     prepareCallbackFunctions(env,instance,coreInterface);
     jbyte *mac = (*env)->GetByteArrayElements(env,  mac_, NULL);
 
-    hm_bt_core_sensing_connect(0, (uint8_t*)mac);
+    hmkit_core_sensing_connect(0, (uint8_t*)mac);
 
     (*env)->ReleaseByteArrayElements(env,  mac_, mac, 0);
 
@@ -196,7 +196,7 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCoreSensingDisconnect(JNIEnv *env, job
     prepareCallbackFunctions(env,instance,coreInterface);
     jbyte *mac = (*env)->GetByteArrayElements(env,  mac_, NULL);
 
-    hm_bt_core_sensing_disconnect((uint8_t*)mac);
+    hmkit_core_sensing_disconnect((uint8_t*)mac);
 
     (*env)->ReleaseByteArrayElements(env,  mac_, mac, 0);
 
@@ -209,7 +209,7 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCorelinkConnect(JNIEnv *env, jobject i
     prepareCallbackFunctions(env,instance,coreInterface);
     jbyte *mac = (*env)->GetByteArrayElements(env,  mac_, NULL);
 
-    hm_bt_core_link_connect(0, (uint8_t*)mac);
+    hmkit_core_link_connect(0, (uint8_t*)mac);
 
     (*env)->ReleaseByteArrayElements(env,  mac_, mac, 0);
 
@@ -222,7 +222,7 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCorelinkDisconnect(JNIEnv *env, jobjec
     prepareCallbackFunctions(env,instance,coreInterface);
     jbyte *mac = (*env)->GetByteArrayElements(env,  mac_, NULL);
 
-    hm_bt_core_link_disconnect((uint8_t*)mac);
+    hmkit_core_link_disconnect((uint8_t*)mac);
 
     (*env)->ReleaseByteArrayElements(env,  mac_, mac, 0);
 
@@ -237,7 +237,7 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCorelinkIncomingData(JNIEnv *env, jobj
     jbyte *data = (*env)->GetByteArrayElements(env,  data_, NULL);
     jbyte *mac = (*env)->GetByteArrayElements(env,  mac_, NULL);
 
-    hm_bt_core_link_incoming_data(0, (uint8_t*)data,size,(uint8_t*)mac,(hm_characteristic)characteriistic_);
+    hmkit_core_link_incoming_data(0, (uint8_t*)data,size,(uint8_t*)mac,(hmkit_core_characteristic)characteriistic_);
 
     (*env)->ReleaseByteArrayElements(env,  data_, data, 0);
     (*env)->ReleaseByteArrayElements(env,  mac_, mac, 0);
@@ -251,7 +251,7 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCorelinkWriteResponse(JNIEnv *env, job
     prepareCallbackFunctions(env,instance,coreInterface);
     jbyte *mac = (*env)->GetByteArrayElements(env,  mac_, NULL);
 
-    hm_bt_core_link_write_response(0, (uint8_t*)mac,(hm_characteristic)characteriistic_);
+    hmkit_core_link_write_response(0, (uint8_t*)mac,(hmkit_core_characteristic)characteriistic_);
 
     (*env)->ReleaseByteArrayElements(env,  mac_, mac, 0);
 
@@ -284,7 +284,7 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCoreSendReadDeviceCertificate(JNIEnv *
     jbyte *nonce = (*env)->GetByteArrayElements(env,  nonce_, NULL);
     jbyte *caSignature = (*env)->GetByteArrayElements(env,  caSignature_, NULL);
 
-    hm_api_send_read_device_certificate(0, (uint8_t*)mac, (uint8_t*)nonce, (uint8_t*)caSignature);
+    hmkit_core_api_send_read_device_certificate(0, (uint8_t*)mac, (uint8_t*)nonce, (uint8_t*)caSignature);
 
     (*env)->ReleaseByteArrayElements(env,  mac_, mac, 0);
     (*env)->ReleaseByteArrayElements(env,  nonce_, nonce, 0);
@@ -299,9 +299,9 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCoreSendRegisterAccessCertificate(JNIE
     prepareCallbackFunctions(env,instance,coreInterface);
     jbyte *certificate = (*env)->GetByteArrayElements(env,  certificate_, NULL);
 
-    hm_certificate_t cert;
-    hm_cert_get_as_struct((uint8_t*)certificate, &cert);
-    hm_api_send_register_access_certificate(0, &cert);
+    hmkit_core_certificate_t cert;
+    hmkit_core_cert_get_as_struct((uint8_t*)certificate, &cert);
+    hmkit_core_api_send_register_access_certificate(0, &cert);
 
     (*env)->ReleaseByteArrayElements(env,  certificate_, certificate, 0);
 
@@ -399,7 +399,7 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCoreTelematicsReceiveData(JNIEnv *env,
 
     jbyte *data = (*env)->GetByteArrayElements(env,  data_, NULL);
 
-    hm_bt_core_telematics_receive_data(0, length, (uint8_t*)data);
+    hmkit_core_telematics_receive_data(0, length, (uint8_t*)data);
 
     (*env)->ReleaseByteArrayElements(env,  data_, data, 0);
 
@@ -415,7 +415,7 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCoreSendTelematicsCommand(JNIEnv *env,
     jbyte *nonce = (*env)->GetByteArrayElements(env,  nonce_, NULL);
     jbyte *data = (*env)->GetByteArrayElements(env,  data_, NULL);
 
-    hm_api_send_telematics_command(0, (uint8_t*)serial, (uint8_t*)nonce, contentType, length, (uint8_t*)data, 0, 0, 2);
+    hmkit_core_api_send_telematics_command(0, (uint8_t*)serial, (uint8_t*)nonce, contentType, length, (uint8_t*)data, 0, 0, 2);
 
     (*env)->ReleaseByteArrayElements(env,  data_, data, 0);
     (*env)->ReleaseByteArrayElements(env,  nonce_, nonce, 0);
@@ -443,7 +443,7 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCoreSetLogLevel(JNIEnv *env, jobject i
 
       prepareCallbackFunctions(env,instance,coreInterface);
 
-      hm_bt_log_set_level(level);
+      hmkit_core_log_set_level(level);
 
 }
 
@@ -455,7 +455,7 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCoreSetMTU(JNIEnv *env, jobject instan
 
       jbyte *mac = (*env)->GetByteArrayElements(env,  mac_, NULL);
 
-      hm_bt_core_set_mtu((uint8_t*)mac, mtu);
+      hmkit_core_set_mtu((uint8_t*)mac, mtu);
 
       (*env)->ReleaseByteArrayElements(env,  mac_, mac, 0);
 

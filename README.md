@@ -1,7 +1,6 @@
-# Core JNI
+# HMKit Core JNI
 
-This repository contains our C Core JNI files. JNI is used in HMKit Android/OEM libraries to 
-access the shared core features.
+Core JNI is used to access [HMKit Core](https://github.com/highmobility/hmkit-core/)
 
 The shared JNI files are: Java and C classes and preBuilt OpenSSL binaries.
 
