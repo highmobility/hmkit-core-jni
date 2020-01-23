@@ -1,6 +1,6 @@
 # HMKit Core JNI
 
-Core JNI is used to access [HMKit Core](https://github.com/highmobility/hmkit-core/)
+Core JNI(Java Native Interface) is used to access [HMKit Core](https://github.com/highmobility/hmkit-core/) in Java projects.
 
 The shared JNI files are: Java and C classes and preBuilt OpenSSL binaries.
 
