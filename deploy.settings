@@ -1,5 +1,5 @@
-siteUrl = https://github.com/highmobility/hm-java-core-jni
-gitUrl = https://github.com/highmobility/hm-java-core-jni
+siteUrl = https://github.com/highmobility/hmkit-core-jni
+gitUrl = https://github.com/highmobility/hmkit-core-jni
 version = 1.0.0
 groupId = com.highmobility
 licenses = ['MIT']
