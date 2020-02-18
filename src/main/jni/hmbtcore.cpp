@@ -333,13 +333,14 @@ JNIEXPORT void JNICALL
 Java_com_highmobility_btcore_HMBTCore_HMBTCoreSendCustomCommand(JNIEnv *env, jobject instance,jobject coreInterface,
                                                                   jint contentType,
                                                                   jbyteArray data_, jint size,
-                                                                  jbyteArray mac_) {
+                                                                  jbyteArray mac_,
+                                                                  jint version) {
     try{
         prepareCallbackFunctions(env,instance,coreInterface);
         jbyte *data = env->GetByteArrayElements( data_, NULL);
         jbyte *mac = env->GetByteArrayElements( mac_, NULL);
 
-        sendSecureContainerUsingMac(0, (uint8_t*)mac, contentType, (uint8_t*)data, size, 0, 0, 2);
+        sendSecureContainerUsingMac(0, (uint8_t*)mac, contentType, (uint8_t*)data, size, 0, 0, version);
 
         env->ReleaseByteArrayElements( data_, data, 0);
         env->ReleaseByteArrayElements( mac_, mac, 0);
@@ -494,7 +495,7 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCoreTelematicsReceiveData(JNIEnv *env,
 
 JNIEXPORT void JNICALL
 Java_com_highmobility_btcore_HMBTCore_HMBTCoreSendTelematicsCommand(JNIEnv *env, jobject instance,jobject coreInterface,
-                                                                      jbyteArray serial_, jbyteArray nonce_, jint contentType, jint length, jbyteArray data_) {
+                                                                      jbyteArray serial_, jbyteArray nonce_, jint contentType, jint length, jbyteArray data_, jint version) {
     try{
         prepareCallbackFunctions(env,instance,coreInterface);
 
@@ -502,7 +503,7 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCoreSendTelematicsCommand(JNIEnv *env,
         jbyte *nonce = env->GetByteArrayElements( nonce_, NULL);
         jbyte *data = env->GetByteArrayElements( data_, NULL);
 
-        hmkit_core_api_send_telematics_command(0, (uint8_t*)serial, (uint8_t*)nonce, contentType, length, (uint8_t*)data, 0, 0, 2);
+        hmkit_core_api_send_telematics_command(0, (uint8_t*)serial, (uint8_t*)nonce, contentType, length, (uint8_t*)data, 0, 0, version);
 
         env->ReleaseByteArrayElements( data_, data, 0);
         env->ReleaseByteArrayElements( nonce_, nonce, 0);

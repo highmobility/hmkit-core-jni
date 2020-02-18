@@ -58,7 +58,7 @@ public class HMBTCore {
 
     public native void HMBTCorelinkWriteResponse(HMBTCoreInterface coreInterface, byte[] mac, int characteristic);
 
-    public native void HMBTCoreSendCustomCommand(HMBTCoreInterface coreInterface, int contentType, byte[] data, int size, byte[] mac);
+    public native void HMBTCoreSendCustomCommand(HMBTCoreInterface coreInterface, int contentType, byte[] data, int size, byte[] mac, int version);
 
     public native void HMBTCoreSendReadDeviceCertificate(HMBTCoreInterface coreInterface, byte[] mac, byte[] nonce, byte[] caSignature);
     public native void HMBTCoreSendRegisterAccessCertificate(HMBTCoreInterface coreInterface, byte[] certificate);
@@ -74,10 +74,10 @@ public class HMBTCore {
 
     //Telematics
     public native void HMBTCoreTelematicsReceiveData(HMBTCoreInterface coreInterface, int length, byte[] data);
-    public native void HMBTCoreSendTelematicsCommand(HMBTCoreInterface coreInterface, byte[] serial, byte[] nonce, int contentType, int length, byte[] data);
+    public native void HMBTCoreSendTelematicsCommand(HMBTCoreInterface coreInterface, byte[] serial, byte[] nonce, int contentType, int length, byte[] data, int version);
 
     //Other
     public native void HMBTCoreSendRevoke(HMBTCoreInterface coreInterface, byte[] serial);
     public native void HMBTCoreSetLogLevel(HMBTCoreInterface coreInterface, int level);
-    public native void HMBTCoreSetMTU(HMBTCoreInterface coreInterface, byte[] mac, byte[] mtu);
+    public native void HMBTCoreSetMTU(HMBTCoreInterface coreInterface, byte[] mac, int mtu);
 }
