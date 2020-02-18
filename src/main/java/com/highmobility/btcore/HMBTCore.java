@@ -79,5 +79,5 @@ public class HMBTCore {
     //Other
     public native void HMBTCoreSendRevoke(HMBTCoreInterface coreInterface, byte[] serial);
     public native void HMBTCoreSetLogLevel(HMBTCoreInterface coreInterface, int level);
-    public native void HMBTCoreSetMTU(HMBTCoreInterface coreInterface, byte[] mac, byte[] mtu);
+    public native void HMBTCoreSetMTU(HMBTCoreInterface coreInterface, byte[] mac, int mtu);
 }
