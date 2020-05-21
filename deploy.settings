@@ -4,4 +4,3 @@ version = 1.0.1
 groupId = com.highmobility
 licenses = MIT
 id = hmkit-core-jni
-repo = gradle-dev-local
