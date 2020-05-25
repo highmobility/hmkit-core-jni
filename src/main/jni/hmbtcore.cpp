@@ -542,21 +542,23 @@ Java_com_highmobility_btcore_HMBTCore_HMBTCoreSetLogLevel(JNIEnv *env, jobject i
 
 }
 
-JNIEXPORT void JNICALL
+JNIEXPORT jint JNICALL
 Java_com_highmobility_btcore_HMBTCore_HMBTCoreSetMTU(JNIEnv *env, jobject instance,jobject coreInterface,
                                                                       jbyteArray mac_, jint mtu) {
+    jint realmtu = 0;
     try{
           prepareCallbackFunctions(env,instance,coreInterface);
 
           jbyte *mac = env->GetByteArrayElements( mac_, NULL);
 
-          hmkit_core_set_mtu((uint8_t*)mac, mtu);
+          realmtu = hmkit_core_set_mtu((uint8_t*)mac, mtu);
 
           env->ReleaseByteArrayElements( mac_, mac, 0);
 
     }
     CATCH_CPP_EXCEPTION_AND_THROW_JAVA_EXCEPTION
 
-}
+    return realmtu;
 
+    }
 }
