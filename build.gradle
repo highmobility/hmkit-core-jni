@@ -14,12 +14,6 @@ repositories {
     jcenter()
 }
 
-def deploy = new Properties()
-deploy.load(new FileInputStream("$projectDir/deploy.settings"))
-
-group = deploy.groupId
-version = deploy.version
-
 sourceCompatibility = 1.8
 
 dependencies {
