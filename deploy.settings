@@ -1,6 +1,6 @@
 siteUrl = https://github.com/highmobility/hmkit-core-jni
 gitUrl = https://github.com/highmobility/hmkit-core-jni
-version = 1.0.1
 groupId = com.highmobility
-licenses = MIT
+licenseName = MIT
+licenseUrl = https://opensource.org/licenses/MIT
 id = hmkit-core-jni
