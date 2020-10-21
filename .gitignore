@@ -85,3 +85,7 @@ obj
 *.so
 *.o
 *.o.d
+
+# osx build
+/openssl_osx/*
+!/openssl_osx/build.sh

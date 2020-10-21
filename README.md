@@ -9,7 +9,7 @@ The Java JNI classes are released as a package, C files are used to build the co
 Android/OEM repositories.
 
 
-OpenSSL binaries for Linux are 1.1.0i, others 1.0.2.m.
+OpenSSL binaries for Linux/MacOS are 1.1.0i, others 1.0.2.m.
 
 ### Setup
 
