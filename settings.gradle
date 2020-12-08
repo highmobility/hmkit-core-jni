@@ -1,3 +1,3 @@
 def deploy = new Properties()
-deploy.load(new FileInputStream("deploy.settings"))
+deploy.load(new FileInputStream("deploy.gradle"))
 rootProject.name = deploy.id
