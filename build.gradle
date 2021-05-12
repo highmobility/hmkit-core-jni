@@ -1,19 +1,9 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5'
-    }
-}
-
 apply plugin: "java"
 apply from: "deploy.gradle"
-apply from: "https://raw.githubusercontent.com/tonisives/tools/master/gradle/deploy-java-v2.gradle"
+apply from: "https://raw.githubusercontent.com/tonisives/tools/master/gradle/deploy-java-mavenCentral.gradle"
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 sourceCompatibility = 1.8
