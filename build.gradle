@@ -1,5 +1,6 @@
 apply plugin: "java"
 apply from: "deploy.gradle"
+apply from: "https://raw.githubusercontent.com/tonisives/tools/master/gradle/deploy-java-mavenCentral.gradle"
 
 repositories {
     mavenCentral()
@@ -10,6 +11,3 @@ sourceCompatibility = 1.8
 dependencies {
     testImplementation 'junit:junit:4.12'
 }
-
-// deploy script
-apply from: "https://raw.githubusercontent.com/tonisives/tools/master/gradle/deploy-java-mavenCentral.gradle"
