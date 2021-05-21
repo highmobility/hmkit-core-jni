@@ -27,7 +27,7 @@
 //Turns on debug functionality
 #define DEBUG
 #define MAX_CLIENTS  5
-#define MAX_COMMAND_SIZE 10024
+#define MAX_COMMAND_SIZE 65000
 #define HMKIT_CORE_LOG_LEVEL 3
 
 ////H-M BT
