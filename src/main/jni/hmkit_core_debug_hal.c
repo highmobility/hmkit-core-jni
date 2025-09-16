@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 #include "hmkit_core_debug_hal.h"
-#include "hmbtcore.h"
+//#include "hmbtcore.h"
 
 #include <stdarg.h>
 #include <stdio.h>
@@ -40,7 +40,7 @@ void hmkit_core_debug_hal_log(const char *str, ...){
 }
 
 void hmkit_core_debug_hal_log_hex(const uint8_t *data, const uint16_t length){
-   jbyteArray mac_ = (*envRef)->NewByteArray(envRef,length);
-   (*envRef)->SetByteArrayRegion(envRef, mac_, 0, length, (const jbyte*) data );
-   (*envRef)->CallIntMethod(envRef, coreInterfaceRef, interfaceMethodHMBTHalLog, 0, mac_);
+   //jbyteArray mac_ = (*envRef)->NewByteArray(envRef,length);
+   //(*envRef)->SetByteArrayRegion(envRef, mac_, 0, length, (const jbyte*) data );
+   //(*envRef)->CallIntMethod(envRef, coreInterfaceRef, interfaceMethodHMBTHalLog, 0, mac_);
 }
